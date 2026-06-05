@@ -6,11 +6,11 @@
 /*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:55:41 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/06/02 14:35:36 by romdo-na         ###   ########.fr       */
+/*   Updated: 2026/06/05 16:03:46 by romdo-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "push_swap.h"
 
 // o "s" eh de "swap"
 
@@ -35,3 +35,18 @@
 
 // Parsing = validacao do argumentos
 // Indexação = colocar os numeros em ordem e colocar index
+
+void	sa(t_stack **a)
+{
+	t_stack	*first;
+	t_stack	*second;
+
+	if (!*a || !(*a)->next)
+		return ;
+	first = *a;   //4 -> 2
+	second = first->next;  //2
+	first->next = second->next; //2 -> 7
+	second->next = first; //4
+	*a = second; //2
+	write(1, "sa\n", 3);
+}
