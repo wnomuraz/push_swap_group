@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 13:57:16 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/05/09 16:38:03 by romdo-na         ###   ########.fr       */
+/*   Created: 2026/04/21 12:10:42 by willpere          #+#    #+#             */
+/*   Updated: 2026/04/30 15:27:17 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,29 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	unsigned char	*d;
-	unsigned char	*s;
+	unsigned char			*dest_bytes;
+	const unsigned char		*src_bytes;
+	size_t					i;
 
-	if (dest == NULL && src == NULL)
+	if (!dest && !src)
 		return (NULL);
-	d = (unsigned char *)dest;
-	s = (unsigned char *)src;
-	while (n > 0)
+	dest_bytes = (unsigned char *) dest;
+	src_bytes = (const unsigned char *) src;
+	i = 0;
+	while (i < n)
 	{
-		*d = *s;
-		d++;
-		s++;
-		n--;
+		dest_bytes[i] = src_bytes[i];
+		i++;
 	}
 	return (dest);
 }
+
+/*int main(void)
+{
+	char source[] = "42 Porto";
+	char destination[10];
+	printf("Before: %s\n", destination);
+	ft_memcpy(destination, source, 10);
+	printf("After: %s\n", destination);	
+	return (0);
+}*/

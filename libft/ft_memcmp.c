@@ -3,41 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 13:57:03 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/05/09 14:56:36 by romdo-na         ###   ########.fr       */
+/*   Created: 2026/04/22 12:04:11 by willpere          #+#    #+#             */
+/*   Updated: 2026/04/30 15:30:58 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t			i;
-	unsigned char	*p1;
-	unsigned char	*p2;
+	const unsigned char	*str1;
+	const unsigned char	*str2;
+	size_t				i;
 
+	str1 = (const unsigned char *)s1;
+	str2 = (const unsigned char *)s2;
 	i = 0;
-	p1 = (unsigned char *)s1;
-	p2 = (unsigned char *)s2;
 	while (i < n)
 	{
-		if (p1[i] != p2[i])
-			return (p1[i] - p2[i]);
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
 		i++;
 	}
 	return (0);
 }
 
-// int main ()
-// {
-//     char *x;
-//     char *y;
-//     int i;
-
-//     x = "abb";
-//     y = "abc";
-//     i = 10;
-//     printf("%i", ft_memcmp(x, y, i));
-// }
+/*int main(void)
+{
+	char s1[] = "abcde";
+	char s2[] = "abcdx";
+	printf("%d\n", ft_memcmp(s1, s2, 0));
+	return (0);
+}*/

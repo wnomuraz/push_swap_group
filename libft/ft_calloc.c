@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 13:04:50 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/05/09 16:30:10 by romdo-na         ###   ########.fr       */
+/*   Created: 2026/04/22 12:37:29 by willpere          #+#    #+#             */
+/*   Updated: 2026/04/29 11:33:40 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,32 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	int		*mem;
-	size_t	total_size;
+	void	*ptr;
 
-	total_size = size * nmemb;
-	mem = malloc(total_size);
-	if (!mem)
+	if (size != 0 && nmemb > SIZE_MAX / size)
 		return (NULL);
-	ft_bzero(mem, total_size);
-	return (mem);
+	ptr = malloc(nmemb * size);
+	if (!ptr)
+		return (NULL);
+	ft_memset(ptr, 0, nmemb * size);
+	return (ptr);
 }
 
-// int main()
-// {
-//     int *arr = ft_calloc(5, sizeof(int));
-
-//     if (!arr)
-//		return (1);
-
-//     for (int i = 0; i < 5; i++)
-//		printf("%d ", arr[i]);
-
-//     free(arr);
-//     return (0);
-// }
+/*int	main(void)
+{
+	int	i;
+	int *array;
+	
+	array = ft_calloc(5, sizeof(int));
+	if (!array)
+		return (1);
+		
+	i = 0;
+	while (i < 5)
+	{
+		printf("Array %d: %d\n", i+1, array[i]);
+		i++;
+	}
+	free(array);
+	return (0);
+}*/

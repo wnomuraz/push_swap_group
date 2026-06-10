@@ -3,16 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 13:07:07 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/05/09 13:07:11 by romdo-na         ###   ########.fr       */
+/*   Created: 2026/04/20 13:33:03 by willpere          #+#    #+#             */
+/*   Updated: 2026/05/04 15:45:53 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int i)
+int	ft_isprint(int c)
 {
-	if (i >= 32 && i <= 126)
+	if (c >= 32 && c <= 126)
 		return (1);
 	return (0);
 }
+
+/*int main(int argc, char **argv)
+{
+	if (argc == 2)
+	{
+		printf("%d", ft_isprint(argv[1][0]));
+	}	
+	return (0);
+}*/

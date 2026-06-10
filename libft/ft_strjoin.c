@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 14:01:13 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/05/09 15:41:40 by romdo-na         ###   ########.fr       */
+/*   Created: 2026/04/22 16:40:35 by willpere          #+#    #+#             */
+/*   Updated: 2026/04/29 14:54:11 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,30 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	total_size;
-	char	*ptr;
-	size_t	i;
-	size_t	j;
+	char	*str;
+	size_t	len_s1;
+	size_t	len_s2;
 
-	total_size = ft_strlen(s1) + ft_strlen(s2);
-	ptr = malloc(sizeof(char) * (total_size + 1));
-	if (!ptr)
+	if (!s1 || !s2)
 		return (NULL);
-	i = 0;
-	while (i < ft_strlen(s1))
-	{
-		ptr[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (i < total_size)
-	{
-		ptr[i] = s2[j];
-		i++;
-		j++;
-	}
-	ptr[i] = '\0';
-	return (ptr);
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	str = malloc(sizeof(char) * (len_s1 + len_s2 + 1));
+	if (!str)
+		return (NULL);
+	ft_strlcpy(str, s1, len_s1 + 1);
+	ft_strlcpy(str + len_s1, s2, len_s2 + 1);
+	return (str);
 }
 
-// int main ()
-// {
-// 	char str1[] = "ola ";
-// 	char str2[] = "mundo";
-
-// 	printf("%s", ft_strjoin(str1, str2));
-// 	return (0);
-// }
+/*int main()
+{
+	char s1[] = "42 ";
+	char s2[] = "Porto";
+	char *result;
+	
+	result = ft_strjoin(s1, s2);
+	printf("%s", result);
+	free(result);
+	return (0);
+}*/

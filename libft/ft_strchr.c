@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 13:59:55 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/05/09 16:03:16 by romdo-na         ###   ########.fr       */
+/*   Created: 2026/04/22 10:52:42 by willpere          #+#    #+#             */
+/*   Updated: 2026/04/29 14:11:47 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,23 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])
 	{
-		if ((unsigned char)s[i] == (unsigned char)c)
-			return ((char *)&s[i]);
+		if (s[i] == (char)c)
+			return ((char *)(&s[i]));
 		i++;
 	}
-	if ((unsigned char)c == '\0')
-		return ((char *)&s[i]);
-	return (0);
+	if ((char)c == '\0')
+		return ((char *)(&s[i]));
+	return (NULL);
 }
 
-// int main(void)
-// {
-//     char str[] = "hello world";
-//     char *result;
-
-//     result = strchr(str, 'd');
-
-//     if (result != NULL)
-//		printf("Found: %s\n", result);
-//     else
-//		printf("Not found\n");
-
-//     return (0);
-// }
+/*int main()
+{
+	char s[] = "bonjour";
+	printf("%s", ft_strchr(s, '\0'));
+	return (0);
+}*/

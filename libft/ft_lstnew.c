@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 13:10:48 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/05/09 13:10:55 by romdo-na         ###   ########.fr       */
+/*   Created: 2026/04/24 14:21:38 by willpere          #+#    #+#             */
+/*   Updated: 2026/04/30 14:58:32 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,23 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*node;
+	t_list	*new;
 
-	node = malloc(sizeof(t_list));
-	if (!node)
+	new = malloc(sizeof(t_list));
+	if (!new)
 		return (NULL);
-	node->content = content;
-	node->next = NULL;
-	return (node);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }
+
+/*int main(void)
+{
+	t_list *node;
+	
+	node = ft_lstnew("42");
+	printf("Conteúdo: %s\n", (char *)node->content);
+	
+	free(node);
+	return (0);
+}*/

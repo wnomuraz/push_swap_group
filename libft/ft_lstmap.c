@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 13:03:25 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/05/09 16:28:43 by romdo-na         ###   ########.fr       */
+/*   Created: 2026/04/27 13:17:26 by willpere          #+#    #+#             */
+/*   Updated: 2026/04/30 14:50:29 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,78 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new_list;
+	t_list	*new_lst;
 	t_list	*new_node;
-	void	*new_content;
+	void	*content;
 
-	if (!f || !del)
+	new_lst = NULL;
+	if (!lst || !f || !del)
 		return (NULL);
-	new_list = NULL;
-	while (lst)
+	while (lst != NULL)
 	{
-		new_content = f(lst->content);
-		new_node = ft_lstnew(new_content);
+		content = f(lst->content);
+		new_node = ft_lstnew(content);
 		if (!new_node)
 		{
-			del(new_content);
-			ft_lstclear(&new_list, del);
+			del(content);
+			ft_lstclear(&new_lst, del);
 			return (NULL);
 		}
-		ft_lstadd_back(&new_list, new_node);
+		ft_lstadd_back(&new_lst, new_node);
 		lst = lst->next;
 	}
-	return (new_list);
+	return (new_lst);
 }
+
+/*void ft_del_content(void *content)
+{
+	free(content);
+}
+
+void *ft_all_to_x(void *content)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	str = ft_strdup((const char *)content);
+	while (str[i])
+	{
+		str[i] = 'x';
+		i++;
+	}
+	return (str);
+}
+
+int	main(void)
+{
+		t_list	*head;
+		t_list	*current;
+		t_list	*result;
+		t_list	*temp;
+
+		head = ft_lstnew(ft_strdup("one"));
+		head->next = ft_lstnew(ft_strdup("two"));
+		head->next->next = ft_lstnew(ft_strdup("three"));
+		current = head;
+		printf("Antes: \n");
+		while (current)
+		{
+			printf("%s", (char *)current->content);
+			if (current->next)
+				printf("\n");
+			current = current->next;
+		}
+		printf("\n");
+
+		result = ft_lstmap(head, ft_all_to_x, ft_del_content);
+		temp = result;
+		while (result != NULL)
+		{
+			printf("%s\n", (char *)result->content);
+			result = result->next;
+		}
+		ft_lstclear(&temp, ft_del_content);
+		ft_lstclear(&head, ft_del_content);
+		return (0);
+	}*/

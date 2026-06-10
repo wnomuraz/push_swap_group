@@ -3,96 +3,65 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 13:07:26 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/05/09 13:07:29 by romdo-na         ###   ########.fr       */
+/*   Created: 2026/04/23 17:28:20 by willpere          #+#    #+#             */
+/*   Updated: 2026/04/30 12:03:02 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	get_len(int n)
+static int	ft_check_size(long n)
 {
-	int	len;
+	long	size;
 
-	len = 0;
-	if (n <= 0)
-		len = 1;
-	while (n != 0)
+	size = 0;
+	if (n < 0)
 	{
-		n /= 10;
-		len++;
+		n *= -1;
+		size = 1;
 	}
-	return (len);
+	while (n >= 10)
+	{
+		n = n / 10;
+		size++;
+	}
+	size++;
+	return (size);
 }
 
 char	*ft_itoa(int n)
 {
-	long	nb;
-	int		len;
-	char	*str;
+	char	*result;
+	long	number;
+	int		i;
+	int		size;
 
-	nb = n;
-	len = get_len(nb);
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (!str)
+	number = n;
+	size = ft_check_size(n);
+	result = malloc(sizeof(char) * (size + 1));
+	if (!result)
 		return (NULL);
-	str[len] = '\0';
-	if (nb == 0)
-		str[0] = '0';
-	if (nb < 0)
+	result[size] = '\0';
+	i = size - 1;
+	if (number < 0)
+		number *= -1;
+	while (i >= 0)
 	{
-		str[0] = '-';
-		nb = -nb;
+		result[i] = number % 10 + 48;
+		number = number / 10;
+		i--;
 	}
-	while (nb > 0)
-	{
-		str[--len] = (nb % 10) + '0';
-		nb /= 10;
-	}
-	return (str);
+	if (n < 0)
+		result[0] = '-';
+	return (result);
 }
 
-// int main(void)
-// {
-// 	char *res;
-
-// 	res = ft_itoa(0);
-// 	printf("0 -> %s\n", res);
-// 	free(res);
-
-// 	res = ft_itoa(42);
-// 	printf("42 -> %s\n", res);
-// 	free(res);
-
-// 	res = ft_itoa(123456);
-// 	printf("123456 -> %s\n", res);
-// 	free(res);
-
-// 	res = ft_itoa(-42);
-// 	printf("-42 -> %s\n", res);
-// 	free(res);
-
-// 	res = ft_itoa(-123456);
-// 	printf("-123456 -> %s\n", res);
-// 	free(res);
-
-// 	res = ft_itoa(INT_MAX);
-// 	printf("INT_MAX -> %s\n", res);
-// 	free(res);
-
-// 	res = ft_itoa(INT_MIN);
-// 	printf("INT_MIN -> %s\n", res);
-// 	free(res);
-
-// 	res = ft_itoa(1000);
-// 	printf("1000 -> %s\n", res);
-// 	free(res);
-
-// 	res = ft_itoa(-1);
-// 	printf("-1 -> %s\n", res);
-// 	free(res);
-
-// 	return (0);
-// }
+/*int main()
+{
+	char *result = ft_itoa(42);
+	printf("%s", result);
+	free(result);
+	return (0);
+}*/

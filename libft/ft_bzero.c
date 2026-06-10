@@ -3,24 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 13:04:40 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/05/09 13:04:44 by romdo-na         ###   ########.fr       */
+/*   Created: 2026/04/21 11:57:25 by willpere          #+#    #+#             */
+/*   Updated: 2026/04/27 15:49:08 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*sta;
+	unsigned char	*bytes;
+	size_t			i;
 
-	sta = (unsigned char *)s;
-	while (n > 0)
+	bytes = s;
+	i = 0;
+	while (i < n)
 	{
-		*sta = 0;
-		sta++;
-		n--;
+		bytes[i] = 0;
+		i++;
 	}
 }
+
+/*int main()
+{
+	int buffer = 123456;
+	printf("Before ft_bzero: %d\n", buffer);
+	ft_bzero(&buffer, sizeof(int));
+	printf("After ft_bzero: %d\n", buffer);
+	return (0);
+}*/

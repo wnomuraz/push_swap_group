@@ -3,16 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 13:06:58 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/05/09 14:21:00 by romdo-na         ###   ########.fr       */
+/*   Created: 2026/04/20 12:43:12 by willpere          #+#    #+#             */
+/*   Updated: 2026/04/22 12:45:03 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int i)
+int	ft_isdigit(int c)
 {
-	if (i >= '0' && i <= '9')
+	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
 }
+
+/*int main(int argc, char **argv)
+{
+	if (argc == 2)
+	{
+		printf("%d", ft_isdigit(argv[1][0]));
+	}	
+	return (0);
+}*/

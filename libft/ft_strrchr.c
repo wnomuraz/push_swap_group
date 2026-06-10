@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 14:03:11 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/05/09 16:03:53 by romdo-na         ###   ########.fr       */
+/*   Created: 2026/04/22 11:20:54 by willpere          #+#    #+#             */
+/*   Updated: 2026/04/22 12:47:38 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,23 @@ char	*ft_strrchr(const char *s, int c)
 {
 	int	i;
 
-	i = ft_strlen(s);
+	i = 0;
+	while (s[i])
+		i++;
+	if ((char)c == '\0')
+		return ((char *)&s[i]);
 	while (i >= 0)
 	{
-		if ((unsigned char)s[i] == (unsigned char)c)
-			return ((char *)&s[i]);
+		if (s[i] == (char)c)
+			return ((char *)(&s[i]));
 		i--;
 	}
 	return (NULL);
 }
 
-// int main(void)
-// {
-//     char str[] = "hello world";
-//     char *result;
-
-//     result = strrchr(str, 'o');
-
-//     if (result != NULL)
-//		printf("Found: %s\n", result);
-//     else
-//		printf("Not found\n");
-
-//     return (0);
-// }
+/*int main()
+{
+	char s[] = "42 PortoPortoPorto";
+	printf("Found: %s", ft_strrchr(s, 'P'));
+	return (0);
+}*/

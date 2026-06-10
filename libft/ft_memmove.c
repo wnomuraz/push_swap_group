@@ -3,39 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 13:57:25 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/05/09 14:19:59 by romdo-na         ###   ########.fr       */
+/*   Created: 2026/04/21 12:52:55 by willpere          #+#    #+#             */
+/*   Updated: 2026/04/30 15:27:24 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t				i;
-	unsigned char		*d;
-	const unsigned char	*s;
+	unsigned char			*dest_bytes;
+	const unsigned char		*src_bytes;
+	size_t					i;
 
 	if (!dest && !src)
 		return (NULL);
-	d = (unsigned char *)dest;
-	s = (const unsigned char *)src;
-	if (d > s)
+	dest_bytes = (unsigned char *)dest;
+	src_bytes = (const unsigned char *)src;
+	i = 0;
+	if (dest_bytes > src_bytes)
 	{
-		i = n;
-		while (i--)
-			d[i] = s[i];
-	}
-	else
-	{
-		i = 0;
-		while (i < n)
+		while (n > i)
 		{
-			d[i] = s[i];
-			i++;
+			dest_bytes[n - 1] = src_bytes[n - 1];
+			n--;
 		}
 	}
+	else
+		ft_memcpy(dest_bytes, src_bytes, n);
 	return (dest);
 }
+
+/*int main(void)
+{
+	char buffer[20] = "42 Porto";
+	printf("Before: %s\n", buffer);
+	ft_memmove(buffer, NULL, 0);
+	memmove(buffer, NULL, 0);
+	printf("After: %s\n", buffer);
+	return (0);
+}*/

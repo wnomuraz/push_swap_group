@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   parse_arguments.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/24 12:22:53 by willpere          #+#    #+#             */
-/*   Updated: 2026/04/24 14:08:42 by willpere         ###   ########.fr       */
+/*   Created: 2026/06/09 16:48:09 by willpere          #+#    #+#             */
+/*   Updated: 2026/06/09 17:00:27 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_putnbr_fd(int n, int fd)
+char	**parse_arguments(int argc, char **argv)
 {
-	long	number;
-	char	c;
+	char	*args;
+	char	**matrix;
+	int		i;
+	int		j;
+	int		k;
 
-	number = n;
-	if (number < 0)
+	args = malloc(total_length(argc, argv));
+	if (!args)
+		return (NULL);
+	i = 1;
+	k = 0;
+	while (i < argc)
 	{
-		number *= -1;
-		write(fd, "-", 1);
+		j = 0;
+		while (argv[i][j])
+			args[k++] = argv[i][j++];
+		if (i < argc - 1)
+			args[k++] = ' ';
+		i++;
 	}
-	if (number >= 10)
-		ft_putnbr_fd((number / 10), fd);
-	c = (number % 10) + 48;
-	write(fd, &c, 1);
+	args[k] = '\0';
+	matrix = ft_split(args, ' ');
+	free(args);
+	return (matrix);
 }
-
-/*int main()
-{
-	ft_putnbr_fd(-42, 1);
-	return (0);
-}*/

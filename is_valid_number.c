@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   is_valid_number.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/24 12:22:53 by willpere          #+#    #+#             */
-/*   Updated: 2026/04/24 14:08:42 by willpere         ###   ########.fr       */
+/*   Created: 2026/06/09 17:00:35 by willpere          #+#    #+#             */
+/*   Updated: 2026/06/10 09:05:42 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int	is_valid_number(char **args_matrix, int elements)
 {
-	long	number;
-	char	c;
-
-	number = n;
-	if (number < 0)
+	int		i;
+	int		j;
+	int		number;
+	
+	i = 0;
+	number = 1;
+	while (i < elements)
 	{
-		number *= -1;
-		write(fd, "-", 1);
+		j = 0;
+		if (args_matrix[i][j] == '+' || args_matrix[i][j] == '-')
+			j++;
+		if (args_matrix[i][j] == '\0')
+			return (0);
+		while (args_matrix[i][j])
+		{
+			if (ft_isdigit(args_matrix[i][j]))
+				j++;
+			else
+				return (0);
+		}
+		i++;			
 	}
-	if (number >= 10)
-		ft_putnbr_fd((number / 10), fd);
-	c = (number % 10) + 48;
-	write(fd, &c, 1);
+	return (1);
 }
-
-/*int main()
-{
-	ft_putnbr_fd(-42, 1);
-	return (0);
-}*/

@@ -3,52 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 14:04:01 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/05/09 16:31:24 by romdo-na         ###   ########.fr       */
+/*   Created: 2026/04/23 11:04:45 by willpere          #+#    #+#             */
+/*   Updated: 2026/04/30 14:25:32 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	is_set(char c, char const *set)
-{
-	while (*set)
-	{
-		if (c == *set)
-			return (1);
-		set++;
-	}
-	return (0);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
+	size_t	start;
+	size_t	end;
 	size_t	len;
-	size_t	sublen;
 	char	*trimmed;
-	size_t	i;
-	size_t	j;
 
-	len = ft_strlen(s1);
-	i = 0;
-	while (s1[i] && is_set(s1[i], set))
-		i++;
-	j = len - 1;
-	while (j > i && is_set(s1[j], set))
-		j--;
-	sublen = j - i;
-	trimmed = (char *)malloc(sizeof(char) * (sublen + 2));
+	if (!s1 || !set)
+		return (NULL);
+	start = 0;
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	if (s1[start] == '\0')
+		return (ft_strdup(""));
+	end = ft_strlen(s1) - 1;
+	while (end > start && ft_strchr(set, s1[end]))
+		end--;
+	len = end - start + 1;
+	trimmed = malloc(sizeof(char) * (len + 1));
 	if (!trimmed)
 		return (NULL);
-	ft_memcpy(trimmed, s1 + i, sublen + 1);
-	trimmed[sublen + 1] = '\0';
+	ft_strlcpy(trimmed, s1 + start, len + 1);
 	return (trimmed);
 }
 
-// int main ()
-// {
-// 	char ptr[] = "xaksormcivfjCxasXxxxx";
-// 	printf("%s", ft_strtrim(ptr, "x"));
-// }
+/*int	main()
+{
+	char *result;
+	result = ft_strtrim("42__Hello 42 World__42", "42_");
+	printf("%s", result);
+	free(result);
+	return (0);
+}*/

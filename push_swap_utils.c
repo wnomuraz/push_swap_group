@@ -1,51 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/24 15:30:44 by willpere          #+#    #+#             */
-/*   Updated: 2026/04/24 15:55:03 by willpere         ###   ########.fr       */
+/*   Created: 2026/06/05 13:40:56 by willpere          #+#    #+#             */
+/*   Updated: 2026/06/09 16:17:09 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_lstsize(t_list *lst)
+int	count_elements(char **args_matrix)
 {
+	int	count;
+
+	if (!args_matrix)
+		return (0);
+	count = 0;
+	while (*args_matrix)
+	{
+		count++;
+		args_matrix++;
+	}
+	return (count);
+}
+
+int	total_length(int argc, char **argv)
+{
+	int	i;
 	int	len;
 
+	i = 1;
 	len = 0;
-	while (lst != NULL)
+	while (i < argc)
 	{
-		lst = lst->next;
+		len += ft_strlen(argv[i]);
 		len++;
+		i++;		
 	}
 	return (len);
 }
 
-/*int main(void)
+void	ft_free_split(char **args_matrix, size_t elements)
 {
-	t_list *my_list;
-	int i = 0;
-	t_list *new;
-	t_list *temp;
-	
-	my_list = NULL;
-	while (i < 10)
-	{
-		new = ft_lstnew("Porto");
-		ft_lstadd_front(&my_list, new);
-		i++;
-	}
-	int len = ft_lstsize(my_list);
-	printf("%d", len);
-	while (my_list)
-	{
-		temp = my_list->next;
-		free(my_list);
-		my_list = temp;
-	}
-	return (0);
-}*/
+	size_t	i;
+
+	i = 0;
+	while (i < elements)
+		free(args_matrix[i++]);
+	free(args_matrix);
+}

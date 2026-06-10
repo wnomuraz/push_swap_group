@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   push_swap_atoi.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/24 12:22:53 by willpere          #+#    #+#             */
-/*   Updated: 2026/04/24 14:08:42 by willpere         ###   ########.fr       */
+/*   Created: 2026/06/10 09:09:55 by willpere          #+#    #+#             */
+/*   Updated: 2026/06/10 09:30:17 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_putnbr_fd(int n, int fd)
+long long	push_swap_atoi(const char *nptr)
 {
-	long	number;
-	char	c;
+	int			i;
+	int			sign;
+	long long	result;
 
-	number = n;
-	if (number < 0)
+	i = 0;
+	sign = 1;
+	result = 0;
+	if (nptr[i] == '+' || nptr[i] == '-')
 	{
-		number *= -1;
-		write(fd, "-", 1);
+		if (nptr[i] == '-')
+			sign = -1;
+		i++;
 	}
-	if (number >= 10)
-		ft_putnbr_fd((number / 10), fd);
-	c = (number % 10) + 48;
-	write(fd, &c, 1);
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		result = result * 10 + (nptr[i] - '0');
+		i++;
+	}
+	return (result *= sign);
 }
-
-/*int main()
-{
-	ft_putnbr_fd(-42, 1);
-	return (0);
-}*/

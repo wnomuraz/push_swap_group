@@ -3,146 +3,100 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 13:59:23 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/05/09 17:09:03 by romdo-na         ###   ########.fr       */
+/*   Created: 2026/04/23 13:48:04 by willpere          #+#    #+#             */
+/*   Updated: 2026/06/05 12:06:42 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count_words(const char *s, char c)
+static void	ft_free_split(char **result, size_t size)
 {
-	int	i;
-	int	words;
+	size_t	i;
 
 	i = 0;
-	words = 0;
-	while (s[i])
-	{
-		if (s[i] != c)
-		{
-			words++;
-			while (s[i] && s[i] != c)
-				i++;
-		}
-		else
-			i++;
-	}
-	return (words);
+	while (i < size)
+		free(result[i++]);
+	free(result);
 }
 
-static char	*word_splitter(const char *s, char c)
+static char	*ft_extract_word(char const *s, char c, size_t *i)
 {
+	size_t	start;
+	size_t	len;
 	char	*word;
-	int		i;
 
-	i = 0;
-	while (s[i] && s[i] != c)
-		i++;
-	word = (char *)malloc(sizeof(char) * (i + 1));
+	start = *i;
+	while (s[*i] && s[*i] != c)
+		(*i)++;
+	len = *i - start;
+	word = malloc(sizeof(char) * (len + 1));
 	if (!word)
 		return (NULL);
-	i = 0;
-	while (s[i] && s[i] != c)
-	{
-		word[i] = s[i];
-		i++;
-	}
-	word[i] = '\0';
+	ft_strlcpy(word, s + start, len + 1);
 	return (word);
 }
 
-static void	free_split(char **arr)
+static size_t	ft_word_count(char const *s, char c)
 {
-	int	i;
+	size_t	i;
+	size_t	count;
 
 	i = 0;
-	if (!arr)
-		return ;
-	while (arr[i])
+	count = 0;
+	while (s[i])
 	{
-		free(arr[i]);
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+			count++;
 		i++;
 	}
-	free(arr);
+	return (count);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int		i;
-	int		j;
-	char	**words;
+	char	**result;
+	size_t	i;
+	size_t	j;
 
+	if (!s)
+		return (NULL);
+	result = malloc(sizeof(char *) * (ft_word_count(s, c) + 1));
+	if (!result)
+		return (NULL);
 	i = 0;
 	j = 0;
-	words = (char **)malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
-	if (!words || !s)
-		return (NULL);
 	while (s[i])
 	{
 		if (s[i] != c)
 		{
-			words[j] = word_splitter(&s[i], c);
-			if (!words[j])
-				return (free_split(words), NULL);
-			while (s[i] && s[i] != c)
-				i++;
+			result[j] = ft_extract_word(s, c, &i);
+			if (!result[j])
+				return (ft_free_split(result, j), NULL);
 			j++;
 		}
 		else
 			i++;
 	}
-	words[j] = 0;
-	return (words);
+	result[j] = NULL;
+	return (result);
 }
 
-// void	print_split(char **arr)
-// {
-// 	int	i;
+/*int main(void)
+{
+    char **result;
+    size_t i;
 
-// 	i = 0;
-// 	if (!arr)
-// 	{
-// 		printf("Result is NULL\n");
-// 		return ;
-// 	}
-// 	while (arr[i] != (void *)0)
-// 	{
-// 		printf("Word %d: %s\n", i, arr[i]);
-// 		i++;
-// 	}
-// }
-
-// int main(void)
-// {
-// 	char **result;
-
-// 	printf("=== Test 1 ===\n");
-// 	result = ft_split("ola mundo 42", ' ');
-// 	print_split(result);
-// 	free_split(result);
-
-// 	printf("\n=== Test 2 ===\n");
-// 	result = ft_split("		ola	mundo	", ' ');
-// 	print_split(result);
-// 	free_split(result);
-
-// 	printf("\n=== Test 3 ===\n");
-// 	result = ft_split("abcdef", ' ');
-// 	print_split(result);
-// 	free_split(result);
-
-// 	printf("\n=== Test 4 ===\n");
-// 	result = ft_split("", ' ');
-// 	print_split(result);
-// 	free_split(result);
-
-// 	printf("\n=== Test 5 ===\n");
-// 	result = ft_split("		 ", ' ');
-// 	print_split(result);
-// 	free_split(result);
-
-// 	return (0);
-// }
+    result = ft_split("42", ' ');
+    i = 0;
+    while (result[i])
+    {
+        printf("%s\n", result[i]);
+		free(result[i]);
+        i++;
+    }
+	free(result);
+    return (0);
+}*/

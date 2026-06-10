@@ -3,41 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 13:56:38 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/05/09 16:22:14 by romdo-na         ###   ########.fr       */
+/*   Created: 2026/04/22 11:42:26 by willpere          #+#    #+#             */
+/*   Updated: 2026/04/30 15:30:01 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdio.h>
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t			i;
-	unsigned char	*ptr;
+	const unsigned char	*bytes;
+	unsigned char		bytes_value;
+	size_t				i;
 
-	ptr = (unsigned char *)s;
 	i = 0;
+	bytes = (const unsigned char *)s;
+	bytes_value = (unsigned char)c;
 	while (i < n)
 	{
-		if (ptr[i] == (unsigned char)c)
-			return ((void *)&ptr[i]);
+		if (bytes[i] == bytes_value)
+			return ((void *)&bytes[i]);
 		i++;
 	}
 	return (NULL);
 }
 
-// int main()
-// {
-//     char str[] = "Hello World";
-
-//     char *result = memchr(str, 'W', 8);
-
-//     if (result)
-//		printf("Found: %s\n", result);
-//     else
-//		printf("Not found\n");
-
-//     return (0);
-// }
+/*int main(void)
+{
+	char data[] = { 'A', 'B', '\0', 'C', 'D' };
+	printf("%p", ft_memchr(data, 'B', 5));
+	return (0);
+}*/

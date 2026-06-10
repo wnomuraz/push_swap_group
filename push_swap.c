@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/24 12:22:53 by willpere          #+#    #+#             */
-/*   Updated: 2026/04/24 14:08:42 by willpere         ###   ########.fr       */
+/*   Created: 2026/06/05 10:29:38 by willpere          #+#    #+#             */
+/*   Updated: 2026/06/10 10:05:43 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int main(int argc, char **argv)
 {
-	long	number;
-	char	c;
+    t_stack *stack_a;
+	t_stack *stack_b;
 
-	number = n;
-	if (number < 0)
-	{
-		number *= -1;
-		write(fd, "-", 1);
-	}
-	if (number >= 10)
-		ft_putnbr_fd((number / 10), fd);
-	c = (number % 10) + 48;
-	write(fd, &c, 1);
+	stack_a = NULL;
+	stack_b = NULL;
+
+    if (argc < 2)
+        return (0);
+	fill_stack_a(&stack_a, argc, argv);
+	
+    return (0);
 }
-
-/*int main()
-{
-	ft_putnbr_fd(-42, 1);
-	return (0);
-}*/

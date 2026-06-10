@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 14:00:56 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/05/09 15:43:26 by romdo-na         ###   ########.fr       */
+/*   Created: 2026/04/24 11:52:08 by willpere          #+#    #+#             */
+/*   Updated: 2026/04/30 13:51:53 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	unsigned int	i;
 
-	i = 0;
 	if (!s || !f)
 		return ;
+	i = 0;
 	while (s[i])
 	{
 		f(i, &s[i]);
@@ -26,19 +26,19 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 	}
 }
 
-// void	to_upper(unsigned int i, char *c)
-// {
-// 	(void)i;
-// 	if (*c >= 'a' && *c <= 'z')
-// 		*c -= 32;
-// }
-
-// int	main(void)
-// {
-// 	char	str;
-
-// 	str = "hello";
-// 	ft_striteri(str, to_upper);
-// 	printf("%s\n", str);
-// 	return (0);
-// }
+/*void ft_change_index(unsigned int i, char *c)
+{
+	if (i % 2 == 0)
+		*c = ft_toupper(*c);
+	else
+		*c = ft_tolower(*c);
+}
+	
+int main()
+{
+	char s[] = "Willian";
+	printf("%s\n", s);
+	ft_striteri(s, ft_change_index);
+	printf("%s", s);
+	return (0);
+}*/

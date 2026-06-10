@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 13:58:29 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/05/09 13:58:42 by romdo-na         ###   ########.fr       */
+/*   Created: 2026/04/24 12:13:37 by willpere          #+#    #+#             */
+/*   Updated: 2026/04/24 12:18:09 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	size_t	len;
-
-	if (!s || !fd)
-		return ;
-	len = 0;
-	while (s[len])
-		len++;
-	write(fd, s, len);
+	write(fd, s, ft_strlen(s));
 }
+
+/*int main()
+{
+	ft_putstr_fd("Willian", 1);
+	return (0);
+}*/

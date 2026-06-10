@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/09 14:00:08 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/05/09 15:43:15 by romdo-na         ###   ########.fr       */
+/*   Created: 2026/04/22 14:56:29 by willpere          #+#    #+#             */
+/*   Updated: 2026/04/29 12:48:11 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,24 @@
 
 char	*ft_strdup(const char *s)
 {
-	int		i;
-	int		size;
-	char	*ptr;
+	char	*p;
+	size_t	len;
 
-	size = ft_strlen(s);
-	ptr = malloc(sizeof(char) * (size + 1));
-	if (!ptr)
+	len = ft_strlen(s);
+	p = malloc((len + 1) * sizeof(char));
+	if (!p)
 		return (NULL);
-	i = 0;
-	while (s[i])
-	{
-		ptr[i] = s[i];
-		i++;
-	}
-	ptr[i] = '\0';
-	return (ptr);
+	ft_strlcpy(p, s, len + 1);
+	return (p);
 }
 
-// int main(void)
-// {
-//     char *str = "42 Porto";
-//     char *dup = ft_strdup(str);
+/*#include <string.h>
 
-//     printf("Original: %s\n", str);
-//     printf("Copy: %s\n", dup);
-
-//     free(dup);
-//     return (0);
-// }
+int main()
+{
+	char s[] = "42 Porto";
+	char *result = ft_strdup(s);
+	printf("%s", result);
+	free(result);	
+	return (0);
+}*/
