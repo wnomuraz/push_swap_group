@@ -6,7 +6,7 @@
 /*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:55:41 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/06/05 16:03:46 by romdo-na         ###   ########.fr       */
+/*   Updated: 2026/06/05 16:40:11 by romdo-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,17 @@ void	sa(t_stack **a)
 	second->next = first; //4
 	*a = second; //2
 	write(1, "sa\n", 3);
+}
+
+void	pb(t_stack **a, t_stack **b)
+{
+	t_stack	*tmp;
+
+	if (!*a)
+		return ;
+	tmp = *a;
+	*a = (*a)->next;
+	tmp->next = *b;
+	*b = tmp;
+	write(1, "pb\n", 3);
 }
