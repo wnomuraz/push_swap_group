@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   is_valid_number.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 17:00:35 by willpere          #+#    #+#             */
-/*   Updated: 2026/06/15 13:48:17 by willpere         ###   ########.fr       */
+/*   Updated: 2026/06/16 19:05:17 by romdo-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	is_valid_number(char **args_matrix, int elements)
 {

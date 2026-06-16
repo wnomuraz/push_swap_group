@@ -6,11 +6,11 @@
 /*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/15 14:37:06 by willpere          #+#    #+#             */
-/*   Updated: 2026/06/16 17:47:12 by romdo-na         ###   ########.fr       */
+/*   Updated: 2026/06/16 19:05:53 by romdo-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static void	swap(t_stack **stack)
 {

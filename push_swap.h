@@ -6,7 +6,7 @@
 /*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 10:34:08 by willpere          #+#    #+#             */
-/*   Updated: 2026/06/16 17:47:43 by romdo-na         ###   ########.fr       */
+/*   Updated: 2026/06/16 19:03:57 by romdo-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,14 @@ void		free_stack(t_stack **stack_a);
 void		sa(t_stack **stack_a);
 void		sb(t_stack **stack_b);
 void		ss(t_stack **stack_a, t_stack **stack_b);
+void		pa(t_stack **a, t_stack **b);
 void		pb(t_stack **a, t_stack **b);
 void		ra(t_stack **a);
 void		rb(t_stack **b);
 void		rr(t_stack **a, t_stack **b);
-
-
-
 void		rra(t_stack **stack);
+void		rrb(t_stack **b);
+void		rrr(t_stack **a, t_stack **b);
 
 t_stack		*stack_last(t_stack *stack);
 void		start(moves **movements);

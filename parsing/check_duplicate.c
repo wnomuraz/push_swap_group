@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_duplicate.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 11:24:38 by willpere          #+#    #+#             */
-/*   Updated: 2026/06/15 13:47:13 by willpere         ###   ########.fr       */
+/*   Updated: 2026/06/16 19:05:01 by romdo-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	check_duplicate(t_stack *stack_a, int number)
 {

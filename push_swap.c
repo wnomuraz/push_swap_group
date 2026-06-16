@@ -6,7 +6,7 @@
 /*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 10:29:38 by willpere          #+#    #+#             */
-/*   Updated: 2026/06/16 17:47:52 by romdo-na         ###   ########.fr       */
+/*   Updated: 2026/06/16 19:12:59 by romdo-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,20 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	moves	*movements;
+	// moves	*movements;
 
-	start(&movements);
+	// start(&movements);
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2)
 		return (0);
 	fill_stack_a(&stack_a, argc, argv);
-	
+
+	pb(&stack_a, &stack_b);
+	printf("stack_a\n");
+	view_stack(stack_a);
+	printf("stack_b\n");
+	view_stack(stack_b);
 	free_stack(&stack_a);
 	return (0);
 }
