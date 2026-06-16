@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap_operations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/15 14:37:06 by willpere          #+#    #+#             */
-/*   Updated: 2026/06/16 14:53:17 by willpere         ###   ########.fr       */
+/*   Updated: 2026/06/16 17:47:12 by romdo-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,4 @@ void	ss(t_stack **stack_a, t_stack **stack_b)
 	swap(stack_a);
 	swap(stack_b);
 	write(1, "ss\n", 3);
-}
-
-void	pb(t_stack **a, t_stack **b)
-{
-	t_stack	*tmp;
-
-	if (!*a)
-		return ;
-	tmp = *a;
-	*a = (*a)->next;
-	if (*a)
-		(*a)->prev = NULL;
-	if (*b)
-		(*b)->prev = tmp;
-	tmp->next = *b;
-	*b = tmp;
-	write(1, "pb\n", 3);
 }

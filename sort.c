@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_operations.c                                  :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/16 11:35:02 by willpere          #+#    #+#             */
-/*   Updated: 2026/06/16 13:38:43 by willpere         ###   ########.fr       */
+/*   Created: 2026/06/16 17:26:19 by romdo-na          #+#    #+#             */
+/*   Updated: 2026/06/16 17:48:12 by romdo-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include "push_swap.h"
+#include "push_swap.h"
 
-static void	push(t_stack **dest, t_stack **src)
+void sort(t_stack **stack_a,t_stack **stack_b)
 {
-	t_stack *push_node;
-
-	if (!src || !*src || !dest)
-		return ;
-	push_node = *src;
-	*src = (*src)->next;
-	if (*src)
-		(*src)->prev = NULL;
-			
-}*/
+//	Disorder metric (mandatory)
+}

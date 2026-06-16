@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+         #
+#    By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/05 10:41:02 by willpere          #+#    #+#              #
-#    Updated: 2026/06/16 16:48:43 by willpere         ###   ########.fr        #
+#    Updated: 2026/06/16 18:25:09 by romdo-na         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 SRCS = push_swap.c push_swap_utils.c parse_arguments.c is_valid_number.c \
 	push_swap_atoi.c fill_stack_a.c check_duplicate.c stack_add_last.c \
-	swap_operations.c rotate_operations.c reverse_rotate_operations.c  
+	operations_push.c operations_rotate.c operations_swap.c
 		
 OBJS = $(SRCS:.c=.o)
 

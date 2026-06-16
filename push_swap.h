@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 10:34:08 by willpere          #+#    #+#             */
-/*   Updated: 2026/06/16 17:01:21 by willpere         ###   ########.fr       */
+/*   Updated: 2026/06/16 17:47:43 by romdo-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,14 @@ void		ss(t_stack **stack_a, t_stack **stack_b);
 void		pb(t_stack **a, t_stack **b);
 void		ra(t_stack **a);
 void		rb(t_stack **b);
-t_stack		*stack_last(t_stack *stack);
+void		rr(t_stack **a, t_stack **b);
+
+
+
 void		rra(t_stack **stack);
+
+t_stack		*stack_last(t_stack *stack);
+void		start(moves **movements);
+
 
 #endif
