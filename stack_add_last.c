@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_arguments.c                                  :+:      :+:    :+:   */
+/*   stack_add_last.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/09 16:48:09 by willpere          #+#    #+#             */
-/*   Updated: 2026/06/10 11:55:25 by willpere         ###   ########.fr       */
+/*   Created: 2026/06/10 12:04:47 by willpere          #+#    #+#             */
+/*   Updated: 2026/06/15 12:45:23 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	**parse_arguments(int argc, char **argv)
+int	stack_add_last(t_stack **stack_a, int number)
 {
-	char	*args;
-	char	**matrix;
-	int		i;
-	int		j;
-	int		k;
+	t_stack	*new_node;
+	t_stack	*last;
 
-	args = malloc(total_length(argc, argv) + 1);
-	if (!args)
-		return (NULL);
-	i = 1;
-	k = 0;
-	while (i < argc)
+	new_node = malloc(sizeof(t_stack));
+	if (!new_node)
+		return (0);
+	new_node->value = number;
+	new_node->next = NULL;
+	new_node->prev = NULL;
+	if (*stack_a == NULL)
 	{
-		j = 0;
-		while (argv[i][j])
-			args[k++] = argv[i][j++];
-		if (i < argc - 1)
-			args[k++] = ' ';
-		i++;
+		*stack_a = new_node;
+		return (1);
 	}
-	args[k] = '\0';
-	matrix = ft_split(args, ' ');
-	free(args);
-	return (matrix);
+	last = *stack_a;
+	while (last->next)
+		last = last->next;
+	last->next = new_node;
+	new_node->prev = last;
+	return (1);
 }

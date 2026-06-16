@@ -6,7 +6,7 @@
 /*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 13:40:56 by willpere          #+#    #+#             */
-/*   Updated: 2026/06/09 16:17:09 by willpere         ###   ########.fr       */
+/*   Updated: 2026/06/16 15:20:37 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ int	total_length(int argc, char **argv)
 	{
 		len += ft_strlen(argv[i]);
 		len++;
-		i++;		
+		i++;
 	}
 	return (len);
 }
 
-void	ft_free_split(char **args_matrix, size_t elements)
+void	free_split(char **args_matrix, size_t elements)
 {
 	size_t	i;
 
@@ -51,4 +51,30 @@ void	ft_free_split(char **args_matrix, size_t elements)
 	while (i < elements)
 		free(args_matrix[i++]);
 	free(args_matrix);
+}
+
+void	free_stack(t_stack **stack)
+{
+	t_stack	*temp;
+	t_stack	*current;
+
+	if (!stack || !*stack)
+		return ;
+	current = *stack;
+	while (current)
+	{
+		temp = current->next;
+		free(current);
+		current = temp;
+	}
+	*stack = NULL;	
+}
+
+t_stack	*stack_last(t_stack *stack)
+{
+	if (!stack)
+		return (NULL);
+	while (stack->next != NULL)
+		stack = stack->next;
+	return (stack);
 }

@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_atoi.c                                   :+:      :+:    :+:   */
+/*   push_operations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/10 09:09:55 by willpere          #+#    #+#             */
-/*   Updated: 2026/06/15 13:48:31 by willpere         ###   ########.fr       */
+/*   Created: 2026/06/16 11:35:02 by willpere          #+#    #+#             */
+/*   Updated: 2026/06/16 13:38:43 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+/*#include "push_swap.h"
 
-long long	push_swap_atoi(const char *nptr)
+static void	push(t_stack **dest, t_stack **src)
 {
-	int			i;
-	int			sign;
-	long long	result;
+	t_stack *push_node;
 
-	i = 0;
-	sign = 1;
-	result = 0;
-	if (nptr[i] == '+' || nptr[i] == '-')
-	{
-		if (nptr[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		result = result * 10 + (nptr[i] - '0');
-		i++;
-	}
-	return (result *= sign);
-}
+	if (!src || !*src || !dest)
+		return ;
+	push_node = *src;
+	*src = (*src)->next;
+	if (*src)
+		(*src)->prev = NULL;
+			
+}*/

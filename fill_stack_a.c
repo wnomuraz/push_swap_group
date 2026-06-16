@@ -6,15 +6,16 @@
 /*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 09:47:00 by willpere          #+#    #+#             */
-/*   Updated: 2026/06/10 10:24:15 by willpere         ###   ########.fr       */
+/*   Updated: 2026/06/15 14:34:19 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	clear_matrix(char **args_matrix, int elements)
+void	clear_all(char **args_matrix, int elements, t_stack **stack_a)
 {
-	ft_free_split(args_matrix, elements);
+	free_split(args_matrix, elements);
+	free_stack(stack_a);
 	write(2, "Error\n", 6);
 	exit(1);
 }
@@ -31,14 +32,17 @@ void	fill_stack_a(t_stack **stack_a, int argc, char **argv)
 		return ;
 	elements = count_elements(args_matrix);
 	if (!is_valid_number(args_matrix, elements))
-		clear_matrix(args_matrix, elements);
+		clear_all(args_matrix, elements, stack_a);
 	i = 0;
 	while (i < elements)
 	{
 		number = push_swap_atoi(args_matrix[i]);
-		if (number > INT_MAX || number < INT_MIN)
-			clear_matrix(args_matrix, elements);
-		
-		i++;	
+		if ((number > INT_MAX || number < INT_MIN)
+			|| check_duplicate(*stack_a, (int)number))
+			clear_all(args_matrix, elements, stack_a);
+		if (!stack_add_last(stack_a, number))
+			clear_all(args_matrix, elements, stack_a);
+		i++;
 	}
+	free_split(args_matrix, elements);
 }

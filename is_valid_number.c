@@ -6,7 +6,7 @@
 /*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 17:00:35 by willpere          #+#    #+#             */
-/*   Updated: 2026/06/10 09:05:42 by willpere         ###   ########.fr       */
+/*   Updated: 2026/06/15 13:48:17 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ int	is_valid_number(char **args_matrix, int elements)
 {
 	int		i;
 	int		j;
-	int		number;
-	
+
 	i = 0;
-	number = 1;
 	while (i < elements)
 	{
 		j = 0;
@@ -34,7 +32,7 @@ int	is_valid_number(char **args_matrix, int elements)
 			else
 				return (0);
 		}
-		i++;			
+		i++;
 	}
 	return (1);
 }

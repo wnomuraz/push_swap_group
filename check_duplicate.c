@@ -1,14 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_duplicate.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/01 15:04:31 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/06/05 16:10:06 by romdo-na         ###   ########.fr       */
+/*   Created: 2026/06/10 11:24:38 by willpere          #+#    #+#             */
+/*   Updated: 2026/06/15 13:47:13 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int	check_duplicate(t_stack *stack_a, int number)
+{
+	while (stack_a)
+	{
+		if (stack_a->value == number)
+			return (1);
+		stack_a = stack_a->next;
+	}
+	return (0);
+}
