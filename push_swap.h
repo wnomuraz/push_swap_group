@@ -6,7 +6,7 @@
 /*   By: romdo-na <romdo-na@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 10:34:08 by willpere          #+#    #+#             */
-/*   Updated: 2026/06/16 19:03:57 by romdo-na         ###   ########.fr       */
+/*   Updated: 2026/06/17 17:18:27 by romdo-na         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,10 @@ void		rr(t_stack **a, t_stack **b);
 void		rra(t_stack **stack);
 void		rrb(t_stack **b);
 void		rrr(t_stack **a, t_stack **b);
+
+int	get_disorder(t_stack *stack);
+double	disorder_ratio(t_stack *stack);
+
 
 t_stack		*stack_last(t_stack *stack);
 void		start(moves **movements);
