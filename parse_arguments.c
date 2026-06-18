@@ -6,7 +6,7 @@
 /*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 16:48:09 by willpere          #+#    #+#             */
-/*   Updated: 2026/06/09 17:00:27 by willpere         ###   ########.fr       */
+/*   Updated: 2026/06/18 11:22:08 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	**parse_arguments(int argc, char **argv)
 	int		j;
 	int		k;
 
-	args = malloc(total_length(argc, argv));
+	args = malloc(total_length(argc, argv) + 1);
 	if (!args)
 		return (NULL);
 	i = 1;

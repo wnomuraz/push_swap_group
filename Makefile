@@ -6,7 +6,7 @@
 #    By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/05 10:41:02 by willpere          #+#    #+#              #
-#    Updated: 2026/06/10 09:48:55 by willpere         ###   ########.fr        #
+#    Updated: 2026/06/18 11:21:51 by willpere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,12 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
-SRCS = push_swap.c push_swap_utils.c parse_arguments.c is_valid_number.c /
-		push_swap_atoi.c fill_stack_a.c
+SRCS = push_swap.c push_swap_utils.c parse_arguments.c \
+	push_swap_atoi.c fill_stack_a.c stack_add_last.c \
+	parsing/check_duplicate.c parsing/is_valid_number.c \
+	operations/push_operations.c operations/reverse_rotate_operations.c\
+	operations/rotate_operations.c operations/swap_operations.c\
+		
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
