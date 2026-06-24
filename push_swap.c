@@ -6,13 +6,13 @@
 /*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 10:29:38 by willpere          #+#    #+#             */
-/*   Updated: 2026/06/18 11:23:30 by willpere         ###   ########.fr       */
+/*   Updated: 2026/06/24 13:25:16 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	start(moves **movements)
+void	start(t_bench **movements)
 {
 	(*movements)->pa = 0;
 	(*movements)->pb = 0;
@@ -53,12 +53,12 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	fill_stack_a(&stack_a, argc, argv);
-
-	pb(&stack_a, &stack_b);
-	printf("stack_a\n");
 	view_stack(stack_a);
-	printf("stack_b\n");
+	select_sort(&stack_a, &stack_b);
+	printf("Stack B->");
 	view_stack(stack_b);
+	printf("Stack A ->");
+	view_stack(stack_a);
 	free_stack(&stack_a);
 	return (0);
 }

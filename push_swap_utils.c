@@ -6,7 +6,7 @@
 /*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/05 13:40:56 by willpere          #+#    #+#             */
-/*   Updated: 2026/06/18 11:22:57 by willpere         ###   ########.fr       */
+/*   Updated: 2026/06/18 16:17:54 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,28 +53,3 @@ void	free_split(char **args_matrix, size_t elements)
 	free(args_matrix);
 }
 
-void	free_stack(t_stack **stack)
-{
-	t_stack	*temp;
-	t_stack	*current;
-
-	if (!stack || !*stack)
-		return ;
-	current = *stack;
-	while (current)
-	{
-		temp = current->next;
-		free(current);
-		current = temp;
-	}
-	*stack = NULL;	
-}
-
-t_stack	*stack_last(t_stack *stack)
-{
-	if (!stack)
-		return (NULL);
-	while (stack->next != NULL)
-		stack = stack->next;
-	return (stack);
-}
