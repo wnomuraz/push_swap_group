@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   disorder.c                                         :+:      :+:    :+:   */
+/*   set_rank.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: willpere <willpere@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/17 17:10:26 by romdo-na          #+#    #+#             */
-/*   Updated: 2026/06/18 14:59:25 by willpere         ###   ########.fr       */
+/*   Created: 2026/06/18 12:53:52 by willpere          #+#    #+#             */
+/*   Updated: 2026/06/18 14:33:09 by willpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-float	get_disorder(t_stack *stack)
+void	set_rank(t_stack **stack)
 {
-	float	mistakes;
-	float	pairs;
-	t_stack *copy;	
-
-	mistakes = 0;
-	pairs = 0;
-	while (stack)
+	t_stack	*i;
+	t_stack	*j;
+	
+	i = *stack;
+	while (i)
 	{
-		copy = stack->next;
-		while (copy)
+		j = *stack;
+		i->rank = 1;
+		while (j)
 		{
-			pairs++;
-			if (stack->value > copy->value)
-				mistakes++;
-			copy = copy->next;			
+			if (i->value > j->value)
+				i->rank++;
+			j = j->next;
 		}
-		stack = stack->next;
+		i = i->next;
 	}
-	return ((mistakes / pairs) * 100);
 }
